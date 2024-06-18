@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 class MyAgglomerative():
     """ Класс для работы с моделью иерархической агломеративной кластеризации. """
     
