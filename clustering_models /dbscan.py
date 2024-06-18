@@ -2,7 +2,7 @@ class MyDBSCAN():
     """Класс для работы с моделью DBSCAN."""
     
     def __init__(self, eps: float = 3, min_samples: int = 3, metric: str = 'euclidean') -> None:
-        """Конструктор для экземпляра класса MyDBSCAN.
+        """ Конструктор для экземпляра класса MyDBSCAN.
 
         Args:
             eps (float): Радиус поиска.
@@ -23,7 +23,7 @@ class MyDBSCAN():
     
     
     def fit_predict(self, X: pd.DataFrame) -> np.array:
-        """Формирует и присваивает кластеры.
+        """ Формирует и присваивает кластеры.
 
         Args: 
             X (pd.DataFrame): Датасет для кластеризации.
@@ -59,7 +59,7 @@ class MyDBSCAN():
         return self.labels 
 
     def _get_distance_matrix(self, X: pd.DataFrame) -> np.ndarray:
-        """Вычисляет попарные расстояния между объектами обучающей выборки.
+        """ Вычисляет попарные расстояния между объектами обучающей выборки.
         
         Args:
             X (pd.DataFrame): Датасет для кластеризации.
@@ -79,7 +79,7 @@ class MyDBSCAN():
         return distance_matrix
 
     def _get_distance(self, point_i: pd.Series, point_j: pd.Series) -> float:
-        """Вычисляет расстояние (по мере self.metric) между точками point_i и point_j.
+        """ Вычисляет расстояние (по мере self.metric) между точками point_i и point_j.
 
         Args:
             point_i, point_j (pd.Series): Точки (наблюдения) исходного датасета.
@@ -103,7 +103,7 @@ class MyDBSCAN():
         return distance
         
     def _grow_cluster(self, root_idx: int, neighbors: np.array) -> None:
-        """Выполняет процедуру формирования кластера вокруг корневой точки root_idx.
+        """ Выполняет процедуру формирования кластера вокруг корневой точки root_idx.
 
         Args:
             root_idx (int): Индекс корневой точки, вокруг которой формируется кластер.
@@ -135,7 +135,7 @@ class MyDBSCAN():
             j += 1
 
     def _get_neighbors(self, point_idx: int) -> np.array:
-        """Выполняет поиск соседей (в радиусе self.eps) для точки point_idx.
+        """ Выполняет поиск соседей (в радиусе self.eps) для точки point_idx.
 
         Args:
             point_idx (int): Индекс точки для которой необходимо найти соседей.
@@ -149,7 +149,7 @@ class MyDBSCAN():
         return neighbors
     
     def __repr__(self) -> str:
-        """Выводит текстовое представление объекта класса.
+        """ Выводит текстовое представление объекта класса.
 
         Returns:
             str: Строка с текстовым представлением объекта класса.
