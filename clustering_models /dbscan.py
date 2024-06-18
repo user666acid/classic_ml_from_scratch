@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 class MyDBSCAN():
     """ Класс для работы с моделью DBSCAN."""
     
