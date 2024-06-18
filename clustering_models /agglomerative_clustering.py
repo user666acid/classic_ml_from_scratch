@@ -83,7 +83,7 @@ class MyAgglomerative():
         return closest_clusters, points
             
     def _update_clusters(self, clusters_to_merge: tuple, points: list) -> dict:
-        """ Обновляет множество кластеров, объединяя ближайшие кластеры. 
+        """ Обновляет множество кластеров, объединяя ближайшие два кластера. 
 
         Args:
             clusters_to_merge: Номера объединяемых кластеров.
