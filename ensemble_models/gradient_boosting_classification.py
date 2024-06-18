@@ -301,25 +301,7 @@ class MyBoostClf():
         """
         probs = pd.Series(np.exp(log_odds) / (1 + np.exp(log_odds)), index=log_odds.index)
         
-        return probs
-
-    # def _get_log_odds(self, y_prob: pd.Series) -> float:
-    #     """ Приводит вероятности к логарифмам шансов.
-
-    #     Args:
-    #         y_prob (pd.Series): 
-    #     """
-    #     log_odds = pd.Series(np.log(1e-15 + y_prob / (1 - y_prob)), index=y_prob.index)
-        
-    #     return log_odds
-    
-    # def _get_antigrad(self, probs: pd.Series, y_true: pd.Series) -> pd.Series: 
-    #     """ Вычисляет 
-    #     """
-    #     grad = pd.Series((y_true - probs), index=y_true.index)
-        
-    #     return grad 
-    
+        return probs   
     
     def __repr__(self) -> str:
         """ Выводит текстовое представление объекта класса.
