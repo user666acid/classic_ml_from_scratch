@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 class MyKMeans():
     """ Класс для работы с моделью K-средних. """
     
