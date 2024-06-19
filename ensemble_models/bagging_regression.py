@@ -6,7 +6,7 @@ import copy
 from typing import Optional, Callable, Union
 
 class MyBaggingReg():
-    """ Класс для работы с моделью бэггинга для регрессии. """
+    """ Класс для работы с моделью бэггинга в задаче регрессии. """
     
     def __init__(self,
                  estimator = None,
@@ -393,7 +393,7 @@ class MyLineReg():
         return f"{type(self).__name__} class: {', '.join(params)}"
 
 class MyKNNReg():
-    """ Класс для работы с моделью k ближайших соседей для регрессии. """
+    """ Класс для работы с моделью k ближайших соседей в задаче регрессии. """
     
     def __init__(self, 
                  k: int = 3,
@@ -555,7 +555,7 @@ class treeNode():
         return self.value is not None
 
 class MyTreeReg():
-    """ Класс для работы с моделью решающего дерева для регрессии. """
+    """ Класс для работы с моделью решающего дерева в задаче регрессии. """
     
     def __init__(self,
                  max_depth: int = 5,
