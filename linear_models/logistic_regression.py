@@ -46,8 +46,116 @@ class MyLogReg():
         self.l2_coef = l2_coef
         
         self.sgd_sample = sgd_sample
-        self.random_state = random_state   
+        self.random_state = random_state
+        
+    def get_coef(self) -> np.array:
+        """ Коэффициенты обученной модели.
+
+        Returns:
+            Коэффициенты.
+
+        """
+        return self.weights[1:].copy()
+     
+    def fit(self, X: pd.DataFrame, y: pd.Series, verbose: Optional[int] = None) -> None:
+        """ Выполняет построение модели логистической регрессии. 
+
+        Args:
+            X: Датасет с признаками, используемый для обучения.
+            y: Истинные значения целевой переменной, используемые для обучения.
+            verbose: Контролирует вывод информации о процессе обучения.
+
+        Returns:
+            None
+
+        """     
+        random.seed(self.random_state)
+        self.metric_values = []
+
+        
+        n_rows, n_features = X.shape
+        # стохастический градиентный спуск 
+        if self.sgd_sample is not None:
+            if not isinstance(self.sgd_sample, int):
+                sgd_sample = round(n_rows * self.sgd_sample)
+            else:
+                sgd_sample = self.sgd_sample
+        
+        # добавляем единичный стобец в матрицу признаков
+        X = np.hstack((np.ones((n_rows, 1)), X))
+        # инициализируем веса
+        if self.weights is None:
+            self.weights = np.ones(n_features + 1)
+
+        
+        for i in range(1, self.n_iter + 1):
+            # лосс
+            y_pred_prob = self._sigmoid(X @ self.weights)
+            logloss = self._get_loss(y, y_pred_prob, self.reg)
+            
+            # вычисляем градиент
+            if self.sgd_sample is not None:
+                batch_rows_idx = random.sample(range(n_rows), sgd_sample)
+                grad = self._get_grad(X, y, y_pred_prob, self.reg, batch=batch_rows_idx)
+            else:
+                grad = self._get_grad(X, y, y_pred_prob, self.reg)
+            
+            # обновляем веса
+            self.weights -= self._get_lr(i) * grad
+            
+            # метрика 
+            if self.metric:
+                metric = self._get_score(X, y, self.metric)
+                self.metric_history.append(metric)
+            # вывод информации о процессе обучения 
+            if verbose and i % verbose == 0:
+                log = f'{i} | loss: {logloss}'
+                if self.metric:
+                    log += f' | {self.metric}: {metric}'
+                print(log)
+
+    def predict(self, X: pd.DataFrame) -> np.array:
+        """ Прогнозирует классы.
+
+        Args:
+            X: Датасет с признаками для прогнозирования.
+
+        Returns:
+            Предсказанные классы.
+
+        """
+        y_pred_prob = self.predict_proba(X)
+        y_pred = (y_pred_prob > .5).astype(int)
+        
+        return y_pred
     
+    def predict_proba(self, X: pd.DataFrame) -> np.array:
+        """ Прогнозирует вероятность класса 1. 
+    
+        Args:
+            X: Датасет с признаками для прогнозирования.
+
+        Returns:
+            Предсказанные вероятности. 
+
+        """
+        n_rows = X.shape[0]
+        X = np.hstack((np.ones((n_rows, 1)), X))
+        
+        logits = X @ self.weights 
+        y_pred_prob = self._sigmoid(logits)
+        
+        return y_pred_prob
+    
+    def get_best_score(self) -> float:
+        """ Метрика качества обученной модели. 
+
+        Returns:
+            Значение метрики.
+
+        """
+        return self.metric_history[-1]
+
     def _sigmoid(self, z: float) -> float:
         """ Приводит логиты к вероятностям.
 
@@ -185,114 +293,6 @@ class MyLogReg():
             score = curr_score / (n_positives * n_negatives)
         
         return score
-        
-    def get_coef(self) -> np.array:
-        """ Коэффициенты обученной модели.
-
-        Returns:
-            Коэффициенты.
-
-        """
-        return self.weights[1:].copy()
-     
-    def fit(self, X: pd.DataFrame, y: pd.Series, verbose: Optional[int] = None) -> None:
-        """ Выполняет построение модели логистической регрессии. 
-
-        Args:
-            X: Датасет с признаками, используемый для обучения.
-            y: Истинные значения целевой переменной, используемые для обучения.
-            verbose: Контролирует вывод информации о процессе обучения.
-
-        Returns:
-            None
-
-        """     
-        random.seed(self.random_state)
-        self.metric_values = []
-
-        
-        n_rows, n_features = X.shape
-        # стохастический градиентный спуск 
-        if self.sgd_sample is not None:
-            if not isinstance(self.sgd_sample, int):
-                sgd_sample = round(n_rows * self.sgd_sample)
-            else:
-                sgd_sample = self.sgd_sample
-        
-        # добавляем единичный стобец в матрицу признаков
-        X = np.hstack((np.ones((n_rows, 1)), X))
-        # инициализируем веса
-        if self.weights is None:
-            self.weights = np.ones(n_features + 1)
-
-        
-        for i in range(1, self.n_iter + 1):
-            # лосс
-            y_pred_prob = self._sigmoid(X @ self.weights)
-            logloss = self._get_loss(y, y_pred_prob, self.reg)
-            
-            # вычисляем градиент
-            if self.sgd_sample is not None:
-                batch_rows_idx = random.sample(range(n_rows), sgd_sample)
-                grad = self._get_grad(X, y, y_pred_prob, self.reg, batch=batch_rows_idx)
-            else:
-                grad = self._get_grad(X, y, y_pred_prob, self.reg)
-            
-            # обновляем веса
-            self.weights -= self._get_lr(i) * grad
-            
-            # метрика 
-            if self.metric:
-                metric = self._get_score(X, y, self.metric)
-                self.metric_history.append(metric)
-            # вывод информации о процессе обучения 
-            if verbose and i % verbose == 0:
-                log = f'{i} | loss: {logloss}'
-                if self.metric:
-                    log += f' | {self.metric}: {metric}'
-                print(log)
-
-    def predict(self, X: pd.DataFrame) -> np.array:
-        """ Прогнозирует классы.
-
-        Args:
-            X: Датасет с признаками для прогнозирования.
-
-        Returns:
-            Предсказанные классы.
-
-        """
-        y_pred_prob = self.predict_proba(X)
-        y_pred = (y_pred_prob > .5).astype(int)
-        
-        return y_pred
-    
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
-        """ Прогнозирует вероятность класса 1. 
-    
-        Args:
-            X: Датасет с признаками для прогнозирования.
-
-        Returns:
-            Предсказанные вероятности. 
-
-        """
-        n_rows = X.shape[0]
-        X = np.hstack((np.ones((n_rows, 1)), X))
-        
-        logits = X @ self.weights 
-        y_pred_prob = self._sigmoid(logits)
-        
-        return y_pred_prob
-    
-    def get_best_score(self) -> float:
-        """ Метрика качества обученной модели. 
-
-        Returns:
-            Значение метрики.
-
-        """
-        return self.metric_history[-1]
 
     def __repr__(self) -> str:
         """ Выводит текстовое представление объекта класса.
