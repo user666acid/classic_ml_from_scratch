@@ -3,7 +3,7 @@ import numpy as np
 
 
 class MyKMeans():
-    """ Класс для работы с моделью K-средних. """
+    """ Класс для работы с моделью кластеризации K-средних. """
     
     def __init__(self, n_clusters: int = 3, max_iter: int = 10, n_init: int = 3, random_state: int = 42) -> None:
         """ Конструктор для экземпляра класса MyKMeans.
