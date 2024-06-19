@@ -6,7 +6,7 @@ from typing import Optional
 from scipy.stats import mode
 
 class MyForestClf():
-    """ Класс для работы с моделью случайного леса для бинарной классификации. """
+    """ Класс для работы с моделью случайного леса в задаче бинарной классификации. """
     
     def __init__(self,
                  n_estimators: int = 10,
@@ -250,7 +250,7 @@ class treeNode():
         return self.value is not None
 
 class MyTreeClf():
-    """ Класс для работы с моделью решающего дерева для бинарной классификации. """
+    """ Класс для работы с моделью решающего дерева в задаче бинарной классификации. """
     
     def __init__(self,
                  max_depth: int = 5,
