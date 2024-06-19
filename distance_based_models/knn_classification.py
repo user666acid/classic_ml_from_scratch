@@ -38,8 +38,8 @@ class MyKNNClf():
             None
 
         """
-        self._train_X = X.copy()
-        self._train_y = y.copy()   
+        self._train_X = X.reset_index(drop=True).copy()
+        self._train_y = y.reset_index(drop=True).copy()   
         self.train_size = X.shape
         
     def predict(self, X: pd.DataFrame) -> np.array:
