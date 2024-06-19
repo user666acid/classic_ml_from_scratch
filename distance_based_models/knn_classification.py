@@ -27,19 +27,19 @@ class MyKNNClf():
         self.metric = metric
         self.weight = weight
                   
-    def fit(self, X: pd.DataFrame, y_true: pd.Series) -> None:
+    def fit(self, X: pd.DataFrame, y: pd.Series) -> None:
         """ Запоминает обучающую выборку. 
 
         Args:
             X: Датасет с признаками, используемый для обучения.
-            y_true: Истинные значения целевой переменной, используемые для обучения. 
+            y: Истинные значения целевой переменной, используемые для обучения. 
 
         Returns:
             None
 
         """
         self._train_X = X.copy()
-        self._train_y = y_true.copy()   
+        self._train_y = y.copy()   
         self.train_size = X.shape
         
     def predict(self, X: pd.DataFrame) -> np.array:
