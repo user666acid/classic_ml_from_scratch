@@ -48,7 +48,7 @@ class MyLineReg():
         self.sgd_sample = sgd_sample
         self.random_state = random_state
         
-    def fit(self, X: pd.DataFrame, y: pd.Series, verbose: Optional[int]=None) -> None:
+    def fit(self, X: pd.DataFrame, y: pd.Series, verbose: Optional[int] = None) -> None:
         """ Выполняет построение модели линейной регрессии. 
 
         Args:
@@ -173,7 +173,7 @@ class MyLineReg():
         
         return score
     
-    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str], batch: Optional[list]=None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str], batch: Optional[list] = None) -> np.array:
         """ Вычисляет градиент функции потерь.
 
         Args:
