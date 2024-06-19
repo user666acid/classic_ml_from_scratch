@@ -647,10 +647,7 @@ class MyTreeReg():
         Returns:
             Лист дерева.
 
-        """
-
-        n_samples = len(y)
-        
+        """   
         leaf_value = np.mean(y)
         self.leafs_sum += leaf_value
         
