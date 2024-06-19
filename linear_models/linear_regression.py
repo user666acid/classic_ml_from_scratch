@@ -206,7 +206,7 @@ class MyLineReg():
             
         return grad + reg_term
     
-    def _get_loss(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str]) -> float:
+    def _get_loss(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None) -> float:
         """ Вычисляет значение функции потерь. 
 
         Args:
