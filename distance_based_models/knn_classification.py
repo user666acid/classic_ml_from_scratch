@@ -154,4 +154,4 @@ class MyKNNClf():
         for k, v in self.__dict__.items():
             params.append(f'{k}={v}')
             
-        return f"{type(self).__name__}: {', '.join(params)}"
+        return f"{type(self).__name__} class: {', '.join(params)}"
