@@ -5,7 +5,7 @@ import random
 from typing import Union, Optional, Callable 
 
 class MyLogReg():
-    """ Класс для работы с моделью логистической регрессии для бинарной классификации. """
+    """ Класс для работы с моделью логистической регрессии в задаче бинарной классификации. """
     
     def __init__(self,
                  n_iter: int = 10,
