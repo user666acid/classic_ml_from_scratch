@@ -7,7 +7,7 @@ from scipy.stats import mode
 from typing import Optional, Union, Callable
 
 class MyBaggingClf():
-    """ Класс для работы с моделью бэггинга для бинарной классификации. """
+    """ Класс для работы с моделью бэггинга в задаче бинарной классификации. """
     
     def __init__(self,
                  estimator = None,
@@ -216,7 +216,7 @@ class treeNode():
         return self.value is not None
 
 class MyTreeClf():
-    """ Класс для работы с моделью решающего дерева для бинарной классификации. """
+    """ Класс для работы с моделью решающего дерева в задаче бинарной классификации. """
     
     def __init__(self,
                  max_depth: int = 5,
@@ -588,7 +588,7 @@ class MyTreeClf():
         return f"{type(self).__name__}: {', '.join(params)}"
 
 class MyKNNClf():
-    """ Класс для работы с моделью k ближайших соседей для бинарной классификации. """
+    """ Класс для работы с моделью k ближайших соседей в задаче бинарной классификации. """
     
     def __init__(self,
                  k: int = 3,
@@ -743,7 +743,7 @@ class MyKNNClf():
         return f"{type(self).__name__} class: {', '.join(params)}"
 
 class MyLogReg():
-    """ Класс для работы с моделью логистической регрессии для бинарной классификации. """
+    """ Класс для работы с моделью логистической регрессии в задаче бинарной классификации. """
     
     def __init__(self,
                  n_iter: int = 10,
