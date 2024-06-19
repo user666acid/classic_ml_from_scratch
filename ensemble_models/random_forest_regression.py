@@ -74,8 +74,7 @@ class MyForestReg():
         random.seed(self.random_state)
          
         self.N = X.shape[0]
-        for col in X.columns:
-            self.fi[col] = 0
+        fself.fi = dict.fromkeys(X.columns, 0)
         
         init_cols = X.columns.to_list()
         init_rows_cnt = self.N
