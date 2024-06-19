@@ -173,7 +173,7 @@ class MyLineReg():
         
         return score
     
-    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str], batch: Optional[list] = None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None, batch: Optional[list] = None) -> np.array:
         """ Вычисляет градиент функции потерь.
 
         Args:
