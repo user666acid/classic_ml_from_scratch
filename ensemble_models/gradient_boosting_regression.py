@@ -5,7 +5,7 @@ import random
 from typing import Optional, Union
 
 class MyBoostReg():
-    """ Класс для работы с моделью градиентного бустинга для регрессии. """
+    """ Класс для работы с моделью градиентного бустинга в задаче регрессии. """
     
     def __init__(self, 
                  n_estimators: int = 10, 
@@ -334,7 +334,7 @@ class treeNode():
         return self.value is not None
 
 class MyTreeReg():
-    """ Класс для работы с моделью решающего дерева для регрессии. """
+    """ Класс для работы с моделью решающего дерева в задаче регрессии. """
     
     def __init__(self,
                  max_depth: int = 5,
