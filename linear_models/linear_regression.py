@@ -245,3 +245,16 @@ class MyLineReg():
             return self.learning_rate
         else:
             return self.learning_rate(i)
+
+    def __repr__(self) -> str:
+        """ Выводит текстовое представление объекта класса.
+
+        Returns:
+            Текстовое представление объекта класса.
+
+        """
+        params = []
+        for k, v in self.__dict__.items():
+            params.append(f'{k}={v}')
+            
+        return f"{type(self).__name__} class: {', '.join(params)}"
