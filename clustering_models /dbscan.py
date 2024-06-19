@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 class MyDBSCAN():
-    """ Класс для работы с моделью DBSCAN."""
+    """ Класс для работы с моделью кластеризации DBSCAN."""
     
     def __init__(self, eps: float = 3, min_samples: int = 3, metric: str = 'euclidean') -> None:
         """ Конструктор для экземпляра класса MyDBSCAN.
