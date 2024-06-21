@@ -81,7 +81,7 @@ class MyBaggingClf():
         self.oob_score_ = self._get_oob_score(y_oob, preds_oob, self.oob_score)
                 
             
-    def predict(self, X: pd.DataFrame, type: str) -> np.array:
+    def predict(self, X: pd.DataFrame, type: str) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -105,7 +105,7 @@ class MyBaggingClf():
             bagging_preds = (bagging_preds > .5).astype(int)
             return mode(bagging_preds, axis=0)[0]
     
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1. 
     
         Args:
@@ -628,7 +628,7 @@ class MyKNNClf():
         self._train_y = y.reset_index(drop=True).copy()   
         self.train_size = X.shape
         
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -645,7 +645,7 @@ class MyKNNClf():
    
         return y_pred
     
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1.
 
         Args:
@@ -786,7 +786,7 @@ class MyLogReg():
         self.sgd_sample = sgd_sample
         self.random_state = random_state
         
-    def get_coef(self) -> np.array:
+    def get_coef(self) -> np.ndarray:
         """ Коэффициенты обученной модели.
 
         Returns:
@@ -852,7 +852,7 @@ class MyLogReg():
                     log += f' | {self.metric}: {metric}'
                 print(log)
 
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -867,7 +867,7 @@ class MyLogReg():
         
         return y_pred
     
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1. 
     
         Args:
@@ -946,7 +946,7 @@ class MyLogReg():
         
         return loss + reg_term
     
-    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None, batch: Optional[list] = None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
         """ Вычисляет градиент функции потерь.
 
         Args:
