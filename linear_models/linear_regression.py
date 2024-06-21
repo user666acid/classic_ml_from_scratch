@@ -111,7 +111,7 @@ class MyLineReg():
                 else:
                     pass
             
-    def get_coef(self) -> np.array:
+    def get_coef(self) -> np.ndarray:
         """ Коэффициенты обученной модели.
 
         Returns:
@@ -120,7 +120,7 @@ class MyLineReg():
         """
         return self.weights[1:].copy()
     
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует целевую переменную.
 
         Args:
@@ -146,7 +146,7 @@ class MyLineReg():
         """
         return self.metric_values[-1]
 
-    def _get_score(self, y_true: np.array, y_pred: np.array, metric: str) -> float:
+    def _get_score(self, y_true: np.ndarray, y_pred: np.ndarray, metric: str) -> float:
         """ Вычисляет значение метрики качества регрессии.
 
         Args:
@@ -173,7 +173,7 @@ class MyLineReg():
         
         return score
     
-    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None, batch: Optional[list] = None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
         """ Вычисляет градиент функции потерь.
 
         Args:
