@@ -402,7 +402,7 @@ class MyTreeReg():
         self.leafs_cnt = 1
         self.root = self._build_tree_recursive(X, y, curr_depth = 0)
         
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует целевую переменную.
 
         Args:
