@@ -48,7 +48,7 @@ class MyLogReg():
         self.sgd_sample = sgd_sample
         self.random_state = random_state
         
-    def get_coef(self) -> np.array:
+    def get_coef(self) -> np.ndarray:
         """ Коэффициенты обученной модели.
 
         Returns:
@@ -114,7 +114,7 @@ class MyLogReg():
                     log += f' | {self.metric}: {metric}'
                 print(log)
 
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -129,7 +129,7 @@ class MyLogReg():
         
         return y_pred
     
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1. 
     
         Args:
@@ -183,7 +183,7 @@ class MyLogReg():
         else:
             return self.learning_rate(i)
     
-    def _get_loss(self, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None) -> float:
+    def _get_loss(self, y_true: pd.Series, y_pred_prob: np.ndarray, reg: Optional[str] = None) -> float:
         """ Вычисляет значение функции потерь. 
 
         Args:
@@ -208,7 +208,7 @@ class MyLogReg():
         
         return loss + reg_term
     
-    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None, batch: Optional[list] = None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.ndarray, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
         """ Вычисляет градиент функции потерь.
 
         Args:
