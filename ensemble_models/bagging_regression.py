@@ -95,7 +95,7 @@ class MyBaggingReg():
         
         return np.mean(bagging_preds, axis=0)
     
-    def _get_oob_score(self, y_true: np.array, y_pred: pd.Series, metric: str) -> float:
+    def _get_oob_score(self, y_true: np.ndarray, y_pred: pd.Series, metric: str) -> float:
         """ Вычисляет значение метрики качества регрессии на OOB выборке.
 
         Args:
@@ -279,7 +279,7 @@ class MyLineReg():
         """
         return self.metric_values[-1]
 
-    def _get_score(self, y_true: np.array, y_pred: np.array, metric: str) -> float:
+    def _get_score(self, y_true: np.ndarray, y_pred: np.ndarray, metric: str) -> float:
         """ Вычисляет значение метрики качества регрессии.
 
         Args:
