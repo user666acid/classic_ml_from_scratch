@@ -115,7 +115,7 @@ class MyForestClf():
         y_oob = y.loc[preds_oob.index]    
         self.oob_score_ = self._get_oob_score(y_oob, preds_oob, self.oob_score)
     
-    def predict(self, X: pd.DataFrame, type: str) -> np.array:
+    def predict(self, X: pd.DataFrame, type: str) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -140,7 +140,7 @@ class MyForestClf():
             return mode(tree_preds, axis=0)[0]
         
         
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1. 
     
         Args:
@@ -157,7 +157,7 @@ class MyForestClf():
             
         return np.mean(tree_preds, axis=0)
                                               
-    def _get_oob_score(self, y_true: np.array, y_pred_prob: pd.Series, metric: str) -> float:
+    def _get_oob_score(self, y_true: np.ndarray, y_pred_prob: pd.Series, metric: str) -> float:
         """ Вычисляет значение метрики качества классификации на OOB выборке.
 
         Args:
