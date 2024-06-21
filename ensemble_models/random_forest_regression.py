@@ -127,7 +127,7 @@ class MyForestReg():
         return y_pred
     
     
-    def _get_oob_score(self, y_true: np.array, y_pred: pd.Series, metric: str) -> float:
+    def _get_oob_score(self, y_true: np.ndarray, y_pred: pd.Series, metric: str) -> float:
         """ Вычисляет значение метрики качества регрессии на OOB выборке.
 
         Args:
