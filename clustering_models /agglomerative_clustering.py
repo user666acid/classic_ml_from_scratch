@@ -113,7 +113,7 @@ class MyAgglomerative():
         return updated_clusters
         
 
-    def _get_distance(self, cluster_i: np.array, cluster_j: np.array) -> float:
+    def _get_distance(self, cluster_i: np.ndarray, cluster_j: np.ndarray) -> float:
         """ Вычисляет расстояние (по мере metric) между (центроидами) кластеров i и j.
 
         Args:
