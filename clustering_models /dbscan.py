@@ -25,7 +25,7 @@ class MyDBSCAN():
         self.labels = None
     
     
-    def fit_predict(self, X: pd.DataFrame) -> np.array:
+    def fit_predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Формирует и присваивает кластеры.
 
         Args: 
@@ -105,7 +105,7 @@ class MyDBSCAN():
             
         return distance
         
-    def _grow_cluster(self, root_idx: int, neighbors: np.array) -> None:
+    def _grow_cluster(self, root_idx: int, neighbors: y) -> None:
         """ Выполняет процедуру формирования кластера вокруг корневой точки root_idx.
 
         Args:
@@ -137,7 +137,7 @@ class MyDBSCAN():
 
             j += 1
 
-    def _get_neighbors(self, point_idx: int) -> np.array:
+    def _get_neighbors(self, point_idx: int) -> np.ndarray:
         """ Выполняет поиск соседей (в радиусе eps) для точки point_idx.
 
         Args:
