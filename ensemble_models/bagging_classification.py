@@ -123,7 +123,7 @@ class MyBaggingClf():
             
         return np.mean(bagging_preds, axis=0)
     
-    def _get_oob_score(self, y_true: np.array, y_pred_prob: pd.Series, metric: str) -> float:
+    def _get_oob_score(self, y_true: np.ndarray, y_pred_prob: pd.Series, metric: str) -> float:
         """ Вычисляет значение метрики качества классификации на OOB выборке.
 
         Args:
@@ -921,7 +921,7 @@ class MyLogReg():
         else:
             return self.learning_rate(i)
     
-    def _get_loss(self, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None) -> float:
+    def _get_loss(self, y_true: pd.Series, y_pred_prob: np.ndarray, reg: Optional[str] = None) -> float:
         """ Вычисляет значение функции потерь. 
 
         Args:
@@ -946,7 +946,7 @@ class MyLogReg():
         
         return loss + reg_term
     
-    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.array, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
+    def _get_grad(self, X: pd.DataFrame, y_true: pd.Series, y_pred_prob: np.ndarray, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
         """ Вычисляет градиент функции потерь.
 
         Args:
