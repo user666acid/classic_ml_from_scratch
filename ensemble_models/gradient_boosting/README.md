@@ -15,5 +15,5 @@
 **Качество модели:**
 - Подсчёт важности признаков 
 - Поддерживаемые метрики качества:
-  - Классификация: accuracy / precision / recall/ f1-мера / roc-auc
+  - Классификация: accuracy / precision / recall / f1 score / roc-auc
   - Регрессия: MAE / MSE / RMSE / MAPE / R2
