@@ -77,7 +77,7 @@ class MyBaggingReg():
         y_oob = y.loc[oob_preds.index]
         self.oob_score_ = self._get_oob_score(y_oob, oob_preds, self.oob_score)
     
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует целевую переменную.
 
         Args:
@@ -244,7 +244,7 @@ class MyLineReg():
                 else:
                     pass
             
-    def get_coef(self) -> np.array:
+    def get_coef(self) -> np.ndarray:
         """ Коэффициенты обученной модели.
 
         Returns:
@@ -306,7 +306,7 @@ class MyLineReg():
         
         return score
     
-    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None, batch: Optional[list] = None) -> np.array:
+    def _get_grad(self, X: pd.DataFrame, y: pd.Series, reg: Optional[str] = None, batch: Optional[list] = None) -> np.ndarray:
         """ Вычисляет градиент функции потерь.
 
         Args:
