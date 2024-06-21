@@ -105,7 +105,7 @@ class MyDBSCAN():
             
         return distance
         
-    def _grow_cluster(self, root_idx: int, neighbors: y) -> None:
+    def _grow_cluster(self, root_idx: int, neighbors: np.ndarray) -> None:
         """ Выполняет процедуру формирования кластера вокруг корневой точки root_idx.
 
         Args:
