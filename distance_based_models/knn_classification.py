@@ -42,7 +42,7 @@ class MyKNNClf():
         self._train_y = y.reset_index(drop=True).copy()   
         self.train_size = X.shape
         
-    def predict(self, X: pd.DataFrame) -> np.array:
+    def predict(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует классы.
 
         Args:
@@ -59,7 +59,7 @@ class MyKNNClf():
    
         return y_pred
     
-    def predict_proba(self, X: pd.DataFrame) -> np.array:
+    def predict_proba(self, X: pd.DataFrame) -> np.ndarray:
         """ Прогнозирует вероятность класса 1.
 
         Args:
