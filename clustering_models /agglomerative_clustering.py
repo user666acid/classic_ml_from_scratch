@@ -38,7 +38,7 @@ class MyAgglomerative():
             # находим две ближайшие между собой точки (кластер тоже может быть точкой)
             closest_clusters, points = self._find_closest_clusters()
             # обновляем кластеры 
-            self.clusters = self._update_clusters(closest_clusters, points)
+            self.clusters = self._update_clusters(X, closest_clusters, points)
 
         # возвращаем итоговые кластеры 
         return [key for key, value in self.clusters.items() for _ in value[0]]
@@ -85,10 +85,11 @@ class MyAgglomerative():
 
         return closest_clusters, points
             
-    def _update_clusters(self, clusters_to_merge: tuple, points: list) -> dict:
+    def _update_clusters(self, X: pd.DataFrame, clusters_to_merge: tuple, points: list) -> dict:
         """ Обновляет множество кластеров, объединяя ближайшие два кластера. 
 
         Args:
+            X: Датасет для кластеризации.
             clusters_to_merge: Номера объединяемых кластеров.
             points: Индексы точек объединяемых кластеров. 
 
